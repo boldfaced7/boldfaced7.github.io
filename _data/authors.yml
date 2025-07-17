@@ -1,18 +1,8 @@
 # Authors
 
-Name Name:
-  name        : "Name Name"
-  uri         : "http://name.com"
-  email       : "name@name.com"
-  bio         : "This is the first name."
-  avatar      : "bio-photo-2.jpg"
-  twitter     : "name"
-  google_plus : "Name"
-
-Name2 Name2:
-  name        : "Name2 Name2"
-  email       : "name2@name2.com"
-  bio         : "I ordered what?"
-  avatar      : "bio-photo.jpg"
-  twitter     : "name2"
-  google_plus : "Name"
+모캥: # 이 이름이 글에서 작성자를 지정할 때 사용됩니다.
+  name: "모캥"
+  bio: "모캥입니다. 개발자입니다. 백엔드를 합니다."
+  location: "Seoul, South Korea"
+  avatar: "images/profile.png" # _config.yml과 경로를 맞춰주세요.
+  github: "boldfaced7"
