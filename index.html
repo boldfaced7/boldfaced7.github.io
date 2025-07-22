@@ -1,0 +1,31 @@
+---
+layout: single
+author_profile: true
+permalink: /
+---
+
+<div class="categories-main">
+  <h1 class="page__title">{{ site.title }}</h1>
+  <p class="page__lead">{{ site.description }}</p>
+
+  {%- assign categories_list = site.categories -%}
+  {%- if categories_list.size > 0 -%}
+  {%- if site.data.category_groups -%}
+  {%- comment %} n단계 계층형 카테고리 목록을 재귀적으로 렌더링합니다. {% endcomment %}
+  {% include category_main_recursive.html list=site.data.category_groups level=1 %}
+  {%- else -%}
+  {%- comment %} 그룹이 정의되지 않은 경우, 플랫한 카테고리 목록 표시 {% endcomment %}
+  <div class="category-group">
+    <h2 class="archive__subtitle">{{ site.data.ui-text[site.locale].categories_label | default: "Categories" }}</h2>
+    <div class="category-items">      {%- for category in categories_list -%}
+      {%- assign category_name = category[0] -%}
+      <a href="{{ site.baseurl }}/categories/#{{ category_name | slugify | url_encode }}" class="category-item">
+        <span class="category-name">{{- category_name -}}</span>
+        <span class="category-count">{{ category[1].size }}</span>
+      </a>
+      {%- endfor -%}
+    </div>
+  </div>
+  {%- endif -%}
+  {%- endif -%}
+</div>

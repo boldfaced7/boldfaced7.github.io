@@ -1,16 +1,42 @@
 {% include base_path %}
 
-{% if page.previous or page.next %}
-  <nav class="pagination">
-    {% if page.previous %}
-      <a href="{{ base_path }}{{ page.previous.url }}" class="pagination--pager" title="{{ page.previous.title | markdownify | strip_html }}">{{ site.data.ui-text[site.locale].pagination_previous | default: "Previous" }}</a>
-    {% else %}
-      <a href="#" class="pagination--pager disabled">{{ site.data.ui-text[site.locale].pagination_previous | default: "Previous" }}</a>
-    {% endif %}
-    {% if page.next %}
-      <a href="{{ base_path }}{{ page.next.url }}" class="pagination--pager" title="{{ page.next.title | markdownify | strip_html }}">{{ site.data.ui-text[site.locale].pagination_next | default: "Next" }}</a>
-    {% else %}
-      <a href="#" class="pagination--pager disabled">{{ site.data.ui-text[site.locale].pagination_next | default: "Next" }}</a>
-    {% endif %}
-  </nav>
+{% comment %}같은 카테고리 내에서 이전글/다음글 찾기{% endcomment %}
+{% assign current_categories = page.categories %}
+{% assign same_category_posts = site.posts | where_exp: "post", "post.categories contains current_categories[0]" | sort: 'title' %}
+{% assign current_index = -1 %}
+{% for post in same_category_posts %}
+  {% if post.url == page.url %}
+    {% assign current_index = forloop.index0 %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if current_index >= 0 %}
+  {% assign prev_post = nil %}
+  {% assign next_post = nil %}
+  
+  {% if current_index > 0 %}
+    {% assign prev_index = current_index | minus: 1 %}
+    {% assign prev_post = same_category_posts[prev_index] %}
+  {% endif %}
+  
+  {% if current_index < same_category_posts.size | minus: 1 %}
+    {% assign next_index = current_index | plus: 1 %}
+    {% assign next_post = same_category_posts[next_index] %}
+  {% endif %}
+
+  {% if prev_post or next_post %}
+    <nav class="pagination">
+      {% if prev_post %}
+        <a href="{{ base_path }}{{ prev_post.url }}" class="pagination--pager" title="{{ prev_post.title | markdownify | strip_html }}">← {{ prev_post.title }}</a>
+      {% else %}
+        <a href="#" class="pagination--pager disabled">← 이전글</a>
+      {% endif %}
+      {% if next_post %}
+        <a href="{{ base_path }}{{ next_post.url }}" class="pagination--pager" title="{{ next_post.title | markdownify | strip_html }}">{{ next_post.title }} →</a>
+      {% else %}
+        <a href="#" class="pagination--pager disabled">다음글 →</a>
+      {% endif %}
+    </nav>
+  {% endif %}
 {% endif %}

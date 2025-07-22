@@ -1,0 +1,91 @@
+{% comment %}
+  Renders category groups recursively for the main page.
+  - list: The list of nodes to render (e.g., site.data.category_groups).
+  - level: The current nesting level, starting from 1.
+{% endcomment %}
+
+{% for node in include.list %}
+  {% if node.name and node.name != "" %}
+    {%- comment -%}Generate a unique ID for the toggle checkbox. The forloop.index ensures uniqueness even if names are identical at the same level.{%- endcomment -%}
+    {%- assign toggle_id = node.name | slugify | append: '-' | append: include.level | append: '-' | append: forloop.index -%}
+    <div class="category-group-node category-group-node--level-{{ include.level }}">
+      {%- comment -%}Only add toggle functionality if there's content to toggle.{%- endcomment -%}
+      {%- if node.children or node.items -%}
+        <input type="checkbox" id="{{ toggle_id }}" class="toggle-checkbox" {% if include.level <= 1 %}checked{% endif %}>
+        <label for="{{ toggle_id }}" class="toggle-label">
+          {% if include.level == 1 %}
+            <h2 class="archive__subtitle is-toggle">{{ node.name }}</h2>
+          {% else %}
+            <h3 class="category-group__subtitle is-toggle">{{ node.name }}</h3>
+          {% endif %}
+        </label>
+        <div class="toggle-content">
+          {%- if node.items -%}
+            <div class="category-items">
+              {% for item in node.items %}
+                {% if item and item != "" and site.categories[item] %}
+                  <a href="{{ site.baseurl }}/categories/#{{ item | slugify | url_encode }}" class="category-item">
+                    <span class="category-name">{{ item }}</span>
+                    <span class="category-count">{{ site.categories[item].size }}</span>
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {%- endif -%}
+          {%- if node.category -%}
+            <div class="category-items">
+              {% assign category_posts = site.categories[node.category] %}
+              {% for post in category_posts %}
+                <a href="{{ post.url }}" class="category-item">
+                  <span class="category-icon">📄</span>
+                  <span class="category-name">{{ post.title | strip_html | strip_newlines }}</span>
+                </a>
+              {% endfor %}
+            </div>
+          {%- endif -%}
+          {%- if node.categories -%}
+            <div class="category-items">
+              {% assign all_posts = site.posts | sort: 'title' %}
+              {% for post in all_posts %}
+                {% assign has_all_categories = true %}
+                {% for category in node.categories %}
+                  {% unless post.categories contains category %}
+                    {% assign has_all_categories = false %}
+                    {% break %}
+                  {% endunless %}
+                {% endfor %}
+                {% if has_all_categories %}
+                  <a href="{{ post.url }}" class="category-item" target="_blank" rel="noopener noreferrer">
+                    <span class="category-icon">📄</span>
+                    <span class="category-name">{{ post.title | strip_html | strip_newlines }}</span>
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {%- endif -%}
+          {%- if node.children -%}
+            <div class="category-subgroups">
+              {% assign next_level = include.level | plus: 1 %}
+              {% include category_main_recursive.html list=node.children level=next_level %}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        {%- comment -%}If no children/items, just display the title without toggle.{%- endcomment -%}
+        {% if include.level == 1 %}
+          {% if node.link %}
+            <h2 class="archive__subtitle no-toggle"><a href="{{ node.link }}">{{ node.name }}</a></h2>
+          {% else %}
+          <h2 class="archive__subtitle no-toggle">{{ node.name }}</h2>
+          {% endif %}
+        {% else %}
+          {% if node.link %}
+            <h3 class="category-group__subtitle no-toggle"><a href="{{ node.link }}">{{ node.name }}</a></h3>
+        {% else %}
+          <h3 class="category-group__subtitle no-toggle">{{ node.name }}</h3>
+          {% endif %}
+        {% endif %}
+      {%- endif -%}
+    </div>
+  {% endif %}
+{% endfor %}

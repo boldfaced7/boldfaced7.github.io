@@ -7,12 +7,12 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "en-US"
+locale                   : "ko-KR"
 site_theme               : "default"
 title                    : "모캥의 기술 블로그"
 title_separator          : "-"
 name                     : &name "모캥"
-description              : &description "기술 블로그 입니다. 모캥입니다."
+description              : &description "기술 블로그입니다. 모캥입니다."
 url                      : "https://boldfaced7.github.io" # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "boldfaced7/boldfaced7.github.io"
@@ -36,7 +36,7 @@ publication_category:
   books:
     title: 'Books'
   manuscripts:
-    title: 'Journal Articles'    
+    title: 'Journal Articles'
   conferences:
     title: 'Conference Papers'
 
@@ -48,11 +48,19 @@ future                   : true
 read_more                : "disabled" # if enabled, adds "Read more" links to excerpts
 talkmap_link             : false      #change to true to add link to talkmap on talks page
 comments:
-  provider               : "utterances"
-  utterances:
+  provider               : "giscus"
+  giscus:
     repo                 : "boldfaced7/boldfaced7.github.io"
-    theme                : "github-light" # github-light, github-dark, icy-dark 등 선택 가능
-    issue_term           : "pathname"
+    repo_id              : "R_kgDOLqQqXg" # GitHub 저장소 ID (나중에 설정)
+    category             : "Comments"
+    category_id          : "DIC_kwDOPN5zcs4CtEyf" # 카테고리 ID (나중에 설정)
+    mapping              : "pathname"
+    strict               : "0"
+    reactions_enabled    : "1"
+    emit_metadata        : "0"
+    input_position       : "top"
+    theme                : "preferred_color_scheme"
+    lang                 : "ko"
 atom_feed:
   hide                   : false     # change to true to hide the RSS feed in the footer
   path                   : # blank (default) uses feed.xml
@@ -132,7 +140,7 @@ kramdown:
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
-
+  syntax_highlighter: rouge
 
 # These settings control the types of collections used by the template
 collections:
@@ -162,7 +170,7 @@ defaults:
       read_time: true
       comments: true
       share: true
-      related: true
+      related: false
   # _pages
   - scope:
       path: ""
@@ -179,6 +187,7 @@ defaults:
       author_profile: true
       share: true
       comments: true
+      related: false
   # _publications
   - scope:
       path: ""
@@ -188,6 +197,7 @@ defaults:
       author_profile: true
       share: true
       comments: true
+      related: false
   # _portfolio
   - scope:
       path: ""
@@ -197,6 +207,7 @@ defaults:
       author_profile: true
       share: true
       comment: true
+      related: false
   # _talks
   - scope:
       path: ""
@@ -205,6 +216,7 @@ defaults:
       layout: talk
       author_profile: true
       share: true
+      related: false
 
 
 # Sass/SCSS

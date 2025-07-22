@@ -67,7 +67,7 @@ p {
 u,
 ins {
   text-decoration: none;
-  border-bottom: 1px solid var(--global-text-color);
+  border-bottom: none; /* 짧은 줄 제거 */
   a {
     color: inherit;
   }
@@ -90,7 +90,7 @@ abbr[title],
 abbr[data-original-title] {
   text-decoration: none;
   cursor: help;
-  border-bottom: 1px dotted var(--global-text-color);
+  border-bottom: none; /* 짧은 줄 제거 */
 }
 
 /* blockquotes */
@@ -255,13 +255,13 @@ figcaption {
   a {
     color: inherit;
     text-decoration: none;
-    border-bottom: 1px solid var(--global-border-color );
+    border-bottom: none; /* 짧은 줄 제거 */
     -webkit-transition: $global-transition;
     transition: $global-transition;
 
     &:hover {
       color: #000;
-      border-bottom-color: #000;
+      border-bottom-color: transparent; /* 호버 시에도 줄 제거 */
     }
   }
 }

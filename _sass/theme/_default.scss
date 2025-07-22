@@ -44,4 +44,5 @@ $sidebar-screen-min-width   : 1024px;
     --global-text-color                 : #{$dark-gray};
     --global-text-color-light           : #{$light-gray};
     --global-thead-color                : #{$lighter-gray};
+    --global-category-border-color      : #ddd; /* 라이트모드 카테고리 구분선 색상 - 더 밝게 조정 */
 }

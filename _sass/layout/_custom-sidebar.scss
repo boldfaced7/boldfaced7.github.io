@@ -1,0 +1,31 @@
+.sidebar__section {
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid var(--global-border-color);
+
+  .sidebar__section-title {
+    margin-bottom: 1em;
+    font-family: $sans-serif-narrow;
+    font-size: $type-size-5;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .sidebar__section-list {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .sidebar__section-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5em;
+    font-size: $type-size-6;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}

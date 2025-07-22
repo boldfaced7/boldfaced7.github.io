@@ -1,0 +1,319 @@
+/* ==========================================================================
+   MAIN CONTENT
+   ========================================================================== */
+
+/*
+   메인 페이지 n단계 카테고리 스타일
+   ========================================================================== */
+.categories-main {
+  /* 카테고리 그룹 노드 기본 스타일 */
+  .category-group-node {
+    margin-top: 0; /* 상단 간격 제거 */
+    margin-bottom: 1em; /* 하단 간격 줄임 */
+    padding-bottom: 0; /* 패딩 제거 */
+    
+    &:last-child {
+      margin-bottom: 0; /* 마지막 요소는 하단 여백 제거 */
+    }
+    
+    /* 그룹 끝난 후 구분선 추가 */
+    &:not(:last-child)::after {
+      content: "";
+      display: block;
+      height: 1px;
+      background-color: var(--global-category-border-color);
+      margin-top: 0.5em; /* 구분선 간격 줄임 */
+      margin-bottom: 0.5em; /* 구분선 간격 줄임 */
+    }
+  }
+
+  /* 레벨별 간격 조정 */
+  .category-group-node--level-1 {
+    margin-top: 0; /* 상단 간격 제거 */
+    margin-bottom: 1.25em; /* 하단 간격 줄임 */
+    padding-bottom: 0; /* 패딩 제거 */
+    
+    &:last-child {
+      margin-bottom: 0; /* 마지막 요소는 하단 여백 제거 */
+    }
+    
+    /* 그룹 끝난 후 구분선 추가 */
+    &:not(:last-child)::after {
+      content: "";
+      display: block;
+      height: 1px;
+      background-color: var(--global-category-border-color);
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+  }
+
+  .category-group-node--level-2 {
+    margin-top: 0; /* 상단 간격 제거 */
+    margin-bottom: 1em; /* 하단 간격 줄임 */
+    padding-bottom: 0; /* 패딩 제거 */
+    
+    &:last-child {
+      margin-bottom: 0; /* 마지막 요소는 하단 여백 제거 */
+    }
+  }
+
+  .category-group-node--level-3 {
+    margin-top: 0; /* 상단 간격 제거 */
+    margin-bottom: 0.75em; /* 하단 간격 줄임 */
+    padding-bottom: 0; /* 패딩 제거 */
+    
+    &:last-child {
+      margin-bottom: 0; /* 마지막 요소는 하단 여백 제거 */
+    }
+  }
+
+  .category-group-node--level-4 {
+    margin-top: 0; /* 상단 간격 제거 */
+    margin-bottom: 0.5em; /* 하단 간격 줄임 */
+    padding-bottom: 0; /* 패딩 제거 */
+    
+    &:last-child {
+      margin-bottom: 0; /* 마지막 요소는 하단 여백 제거 */
+    }
+  }
+
+  .category-group-node--level-5 {
+    margin-top: 0; /* 상단 간격 제거 */
+    margin-bottom: 0.25em; /* 하단 간격 줄임 */
+    padding-bottom: 0; /* 패딩 제거 */
+    
+    &:last-child {
+      margin-bottom: 0; /* 마지막 요소는 하단 여백 제거 */
+    }
+  }
+
+  .archive__subtitle { // 레벨 1 제목
+    font-size: 1.25rem; // 약 20px, 가장 크게 설정
+    font-weight: bold;
+    color: var(--global-text-color); // 흐릿하지 않은 기본 텍스트 색상
+    margin-top: 0; /* 상단 간격 제거 */
+    margin-bottom: 0.1em; // 토글과 동일한 간격으로 조정
+    text-decoration: none !important; /* 밑줄 강제 제거 */
+    border-bottom: none !important; /* 밑줄 강제 제거 */
+    
+    &::after,
+    &::before {
+      display: none !important; /* 가상 요소에서 나오는 줄 강제 제거 */
+      content: none !important;
+    }
+  }
+
+  .category-group__subtitle { // 레벨 2 이상 제목
+    font-weight: bold;
+    margin-top: 0; /* 상단 간격 제거 */
+    margin-bottom: 0.1em; // 토글과 동일한 간격으로 조정
+    text-decoration: none !important; /* 밑줄 강제 제거 */
+    border-bottom: none !important; /* 밑줄 강제 제거 */
+    
+    &::after,
+    &::before {
+      display: none !important; /* 가상 요소에서 나오는 줄 강제 제거 */
+      content: none !important;
+    }
+  }
+
+  // 모든 카테고리 제목 통일 (볼드체 유지)
+  .category-group-node--level-2 > .category-group__subtitle,
+  .category-group-node--level-3 > .category-group__subtitle,
+  .category-group-node--level-4 > .category-group__subtitle,
+  .category-group-node--level-5 > .category-group__subtitle,
+  .toggle-label .category-group__subtitle {
+    font-size: 1rem; // 모든 레벨 동일한 글씨 크기
+    font-weight: bold; // 볼드체 유지
+    margin-top: 0.3em; /* 모든 레벨 동일한 상단 간격 */
+    margin-bottom: 0.1em; /* 토글과 동일한 간격으로 조정 */
+    padding-bottom: 0; /* 패딩 제거 */
+    border-bottom: none; /* 짧은 줄 제거 */
+    color: var(--global-text-color);
+  }
+
+  .category-subgroups {
+    /* 서브그룹과 상위 콘텐츠 간 일정한 간격 */
+    margin-top: 0.2em; /* 상단 간격 줄임 */
+    margin-bottom: 0.5em; /* 하단 간격 줄임 */
+  }
+
+  /* Apply indentation and border directly to nodes inside a subgroup container */
+  .category-subgroups > .category-group-node {
+    padding-left: 1.5em;
+    border-left: none !important; /* 세로선 강제 제거 */
+    border-right: none !important;
+    
+    &::before,
+    &::after {
+      border-left: none !important;
+      border-right: none !important;
+    }
+  }
+
+  /* 모든 세로선 완전 제거 */
+  .category-group-node {
+    border-left: none !important;
+    border-right: none !important;
+    
+    &::before,
+    &::after {
+      border-left: none !important;
+      border-right: none !important;
+    }
+  }
+
+  /* 서브그룹 내부의 모든 세로선 제거 */
+  .category-subgroups {
+    border-left: none !important;
+    border-right: none !important;
+    
+    &::before,
+    &::after {
+      border-left: none !important;
+      border-right: none !important;
+    }
+  }
+
+  /* 토글 콘텐츠 내부의 세로선 제거 */
+  .toggle-content {
+    border-left: none !important;
+    border-right: none !important;
+    
+    &::before,
+    &::after {
+      border-left: none !important;
+      border-right: none !important;
+    }
+  }
+
+  .category-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-top: 0.5em; /* 상단 간격 추가 */
+    margin-bottom: 0.5em; /* 하단 간격 줄임 */
+    padding-left: 1.5em; /* 들여쓰기 추가 */
+  }
+
+  .category-item {
+    display: flex;
+    align-items: flex-start; /* 왼쪽 정렬로 변경 */
+    justify-content: flex-start; /* 왼쪽 정렬 강제 */
+    padding: 0.25em 0; /* 상하 패딩 추가 */
+    text-decoration: none;
+    color: var(--global-text-color);
+    transition: all 0.2s ease-in-out;
+    font-size: 1rem; /* 글씨 크기 키움 */
+
+    &:hover {
+      transform: none; /* 호버 효과 제거 */
+      box-shadow: none; /* 그림자 제거 */
+      border-color: transparent;
+      color: var(--global-text-color); /* 기본 텍스트 색상 유지 */
+      opacity: 0.8; /* 약간 투명하게 하여 부드러운 효과 */
+    }
+
+    .category-icon {
+      margin-right: 0.5em; /* 아이콘과 텍스트 간격 */
+      font-size: 0.9em; /* 아이콘 크기 */
+      flex-shrink: 0; /* 아이콘 크기 고정 */
+    }
+
+    .category-name {
+      font-weight: bold;
+      font-size: 1rem; /* 글씨 크기 명시 */
+      text-align: left; /* 왼쪽 정렬 강제 */
+    }
+
+    .category-count {
+      margin-left: 0.5em;
+      color: var(--global-text-color-light); /* 연한 색상으로 변경 */
+      font-size: 0.75em; /* 더 작은 글씨 */
+      font-weight: normal; /* 일반 굵기 */
+      opacity: 0.7; /* 투명도 추가로 더 부드럽게 */
+    }
+  }
+}
+
+/*
+   Toggle Functionality Styles
+   ========================================================================== */
+.categories-main {
+  // Hide the checkbox itself
+  .toggle-checkbox {
+    display: none;
+  }
+
+  // The clickable label containing the title
+  .toggle-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none; // Prevents text selection on double-click
+    text-decoration: none !important; /* 밑줄 강제 제거 */
+    border-bottom: none !important; /* 밑줄 강제 제거 */
+
+    // The toggle icon (e.g., arrow)
+    &::before {
+      content: "▶";
+      display: inline-block;
+      font-size: 0.7em;
+      margin-right: 0.75em;
+      color: var(--global-text-color); // 토글 색상을 기본 텍스트 색상(검은색 계열)으로 변경
+      transition: transform 0.2s ease-in-out;
+    }
+    
+    &::after {
+      display: none !important; /* 가상 요소에서 나오는 줄 강제 제거 */
+      content: none !important;
+    }
+
+    // Titles inside the label should not have their own vertical margins
+    .archive__subtitle {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-weight: bold; // 모든 제목은 볼드체
+      text-decoration: none !important; /* 밑줄 강제 제거 */
+      border-bottom: none !important; /* 밑줄 강제 제거 */
+    }
+    
+    .category-group__subtitle {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-weight: bold; // 모든 제목은 볼드체
+      text-decoration: none !important; /* 밑줄 강제 제거 */
+      border-bottom: none !important; /* 밑줄 강제 제거 */
+    }
+  }
+
+  // 토글 라벨과 콘텐츠 간 간격 조정
+  .toggle-label {
+    margin-top: 0; /* 상단 간격 제거 */
+    margin-bottom: 0.1em; /* 토글 라벨 하단 간격 줄임 */
+  }
+
+  // Container for the content to be toggled
+  .toggle-content {
+    display: none; // Hide by default
+    padding-top: 0; // 제목과 콘텐츠 간 간격 제거
+    margin-bottom: 0.25em; // 콘텐츠 하단 간격 조정
+  }
+
+  // When the checkbox is checked, display the content
+  .toggle-checkbox:checked ~ .toggle-content {
+    display: block;
+  }
+
+  // When the checkbox is checked, rotate the icon
+  .toggle-checkbox:checked + .toggle-label::before {
+    transform: rotate(90deg);
+  }
+  // Remove vertical margins from titles that act as toggles,
+  // as spacing is handled by the .toggle-content container.
+  .is-toggle {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}

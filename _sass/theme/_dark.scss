@@ -51,4 +51,5 @@ html[data-theme="dark"] {
     --global-text-color                 : #{$text};
     --global-text-color-light           : #{$light-gray};
     --global-thead-color                : #{$background-lighter};
+    --global-category-border-color      : #aaa; /* 다크모드 카테고리 구분선 색상 */
 }

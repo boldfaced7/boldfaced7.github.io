@@ -1,0 +1,132 @@
+/*
+   사용자 정의 스타일
+   ========================================================================== */
+
+.sidebar__section {
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid var(--global-border-color);
+
+  .sidebar__section-title {
+    margin-bottom: 1em;
+    font-family: $sans-serif-narrow;
+    font-size: $type-size-5;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .sidebar__section-list {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .sidebar__section-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5em;
+    font-size: $type-size-6;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+/* 카테고리 그룹 노드 스타일 개선 */
+.category-group-node {
+  margin-bottom: 1.5em; /* 모든 그룹 간 일정한 간격 */
+  
+  &:last-child {
+    margin-bottom: 0; /* 마지막 요소는 하단 여백 제거 */
+  }
+}
+
+.category-group-node--level-1 {
+  margin-bottom: 2em; /* 최상위 레벨 그룹 간격 */
+}
+
+.category-group-node--level-2 {
+  margin-bottom: 1.5em; /* 두 번째 레벨 그룹 간격 */
+}
+
+.category-group-node--level-3 {
+  margin-bottom: 1em; /* 세 번째 레벨 그룹 간격 */
+}
+
+/* 토글 라벨 스타일 */
+.toggle-label {
+  cursor: pointer;
+  margin-bottom: 0.75em; /* 라벨과 콘텐츠 간 일정한 간격 */
+  display: block;
+}
+
+/* 토글 콘텐츠 스타일 */
+.toggle-content {
+  margin-top: 0.75em; /* 라벨과 콘텐츠 간 일정한 간격 */
+}
+
+/* 카테고리 아이템 스타일 */
+.category-items {
+  margin-bottom: 1em; /* 아이템 그룹 간 일정한 간격 */
+}
+
+.category-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 0;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid transparent; /* 호버 효과를 위한 투명 보더 */
+  transition: border-color 0.2s ease;
+  
+  &:hover {
+    border-bottom-color: var(--global-border-color);
+  }
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.category-name {
+  font-size: $type-size-6;
+}
+
+.category-count {
+  font-size: $type-size-6;
+  color: var(--global-text-color-light);
+  font-weight: normal;
+}
+
+/* 카테고리 서브그룹 스타일 */
+.category-subgroups {
+  margin-top: 1em; /* 서브그룹과 상위 콘텐츠 간 일정한 간격 */
+  padding-left: 1em; /* 들여쓰기 */
+  border-left: 2px solid var(--global-border-color);
+}
+
+/* 아카이브 서브타이틀 스타일 통일 */
+.archive__subtitle,
+.category-group__subtitle {
+  margin-bottom: 0.75em; /* 모든 제목의 하단 여백 통일 */
+  font-family: $sans-serif-narrow;
+  font-size: $type-size-5;
+  font-weight: bold;
+}
+
+/* 토글 체크박스 숨김 */
+.toggle-checkbox {
+  display: none;
+}
+
+/* 토글 기능 스타일 */
+.toggle-content {
+  display: block; /* 기본적으로 보이도록 설정 */
+}
+
+.toggle-checkbox:not(:checked) + .toggle-label + .toggle-content {
+  display: none; /* 체크되지 않은 경우 숨김 */
+}

@@ -18,3 +18,9 @@ package-lock.json
 
 # Ignore folders related to IDEs
 .vscode/
+/.idea/.gitignore
+/.idea/boldfaced7.github.io.iml
+/.idea/git_toolbox_prj.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml

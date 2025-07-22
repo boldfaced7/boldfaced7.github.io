@@ -8,8 +8,12 @@
 #      Markdown formatted page while the second is generated using JSON.
 
 main:
-  - title: "Posts"
+  - title: "전체 글"
     url: /year-archive/
-    
-  - title: "CV"
-    url: /cv/
+  - title: "카테고리"
+    url: /categories/
+  - title: "태그"
+    url: /tags/
+
+  - title: "About"
+    url: /about/

@@ -1,0 +1,17 @@
+{%- assign categories_list = site.categories | sort -%}
+{%- if categories_list.size > 0 -%}
+<div class="sidebar__section">
+  <h4 class="sidebar__section-title">{{ site.data.ui-text[site.locale].categories_label | default: "Categories" }}</h4>
+  <ul class="sidebar__section-list">
+    {%- for category in categories_list -%}
+      {%- assign category_name = category[0] -%}
+      <li class="sidebar__section-item">
+        <a href="{{ site.baseurl }}/categories/#{{ category_name | slugify | url_encode }}">
+          {{- category_name -}}
+        </a>
+        <span class="sidebar__section-item-count">{{ category[1].size }}</span>
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+{%- endif -%}
