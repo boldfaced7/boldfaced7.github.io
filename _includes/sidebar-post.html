@@ -1,0 +1,12 @@
+{% include base_path %}
+
+{% if site.toc and page.toc != false %}
+  <div class="sidebar sticky sidebar-post">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fa fa-list"></i> {{ site.toc_label | default: "목차" }}</h4></header>
+      <ul class="toc__menu" id="markdown-toc-sidebar">
+        <!-- 사이드바 목차는 JavaScript로 동적 생성됩니다 -->
+      </ul>
+    </nav>
+  </div>
+{% endif %} 

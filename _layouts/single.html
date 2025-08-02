@@ -14,10 +14,14 @@ layout: default
   {% endunless %}
 {% endif %}
 
-<div id="main" role="main">
-  {% include sidebar.html %}
+<div id="{% if page.url == '/' %}main-home{% else %}main-post{% endif %}" role="main">
+  {% if page.url == "/" %}
+    {% include sidebar-home.html %}
+  {% else %}
+    {% include sidebar-post.html %}
+  {% endif %}
 
-  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="page {% if page.url == '/' %}page-home{% else %}page-post{% endif %}" itemscope itemtype="http://schema.org/CreativeWork">
     {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
     {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
     {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
@@ -45,6 +49,16 @@ layout: default
       {% endunless %}
 
       <section class="page__content" itemprop="text">
+        {% if page.url != "/" and site.toc and page.toc != false %}
+          <div class="toc-top">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fa fa-list"></i> {{ site.toc_label | default: "목차" }}</h4></header>
+              <ul class="toc__menu" id="markdown-toc-top">
+                <!-- 상단 목차는 JavaScript로 동적 생성됩니다 -->
+              </ul>
+            </nav>
+          </div>
+        {% endif %}
         {{ content }}
 
         {% if page.citation and page.paperurl and page.slidesurl and page.bibtexurl %}

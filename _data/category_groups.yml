@@ -99,6 +99,10 @@
           categories: ["Kafka", "실전 카프카 개발부터 운영까지", "프로듀서의 내부 동작 원리와 구현"]
           children: []
 
+        - name: "📁 컨슈머의 내부 동작 원리와 구현"
+          categories: ["Kafka", "실전 카프카 개발부터 운영까지", "컨슈머의 내부 동작 원리와 구현"]
+          children: []
+
     - name: "📖 카프카 핵심 가이드"
       children:
         - name: "📁 카프카 프로듀서: 카프카에 메시지 쓰기"
@@ -107,8 +111,8 @@
 
     - name: "🎥 Kafka와 메시징 큐"
       children:
-        - name: "📁 Kafka Message"
-          categories: ["Kafka", "Kafka와 메시징 큐", "Kafka Message"]
+        - name: "📁 Kafka Messaging"
+          categories: ["Kafka", "Kafka와 메시징 큐", "Kafka Messaging"]
           children: []
 
         - name: "📁 CDC(Change Data Capture)"

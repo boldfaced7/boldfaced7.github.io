@@ -6,8 +6,10 @@
 
 {% for node in include.list %}
   {% if node.name and node.name != "" %}
-    {%- comment -%}Generate a unique ID for the toggle checkbox. The forloop.index ensures uniqueness even if names are identical at the same level.{%- endcomment -%}
-    {%- assign toggle_id = node.name | slugify | append: '-' | append: include.level | append: '-' | append: forloop.index -%}
+    {%- comment -%}Generate a unique ID for the toggle checkbox. Include parent context to ensure uniqueness across different sections.{%- endcomment -%}
+    {%- assign parent_context = include.parent_context | default: '' -%}
+    {%- assign current_context = parent_context | append: '-' | append: node.name | slugify -%}
+    {%- assign toggle_id = current_context | append: '-' | append: include.level | append: '-' | append: forloop.index -%}
     <div class="category-group-node category-group-node--level-{{ include.level }}">
       {%- comment -%}Only add toggle functionality if there's content to toggle.{%- endcomment -%}
       {%- if node.children or node.items -%}
@@ -66,7 +68,7 @@
           {%- if node.children -%}
             <div class="category-subgroups">
               {% assign next_level = include.level | plus: 1 %}
-              {% include category_main_recursive.html list=node.children level=next_level %}
+              {% include category_main_recursive.html list=node.children level=next_level parent_context=current_context %}
             </div>
           {%- endif -%}
         </div>

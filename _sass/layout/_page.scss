@@ -2,7 +2,8 @@
    SINGLE PAGE/POST
    ========================================================================== */
 
-#main {
+// 홈페이지용 메인 스타일
+#main-home {
   @include container;
   @include clearfix;
   margin-top: 2em;
@@ -15,12 +16,65 @@
     max-width: $x-large;
   }
 }
+// 포스트 페이지용 메인 스타일
+#main-post {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1800px;
 
-.page {
+  @include clearfix;
+  margin-top: 2em;
+  padding-left: 0em;
+  padding-right: 1em;
+  animation: intro 0.3s both;
+  animation-delay: 0.35s;
+}
+
+// 홈페이지용 페이지 스타일 - 완전 분리
+.page-home {
   @include breakpoint($large) {
-    @include span(10 of 12 last);
-    @include prefix(0.5 of 12);
-    @include suffix(2 of 12);
+    // 가로 화면 (landscape) - 홈페이지용
+    @media (orientation: landscape) {
+      @include span(10 of 12 last);
+      @include prefix(0.5 of 12);
+      @include suffix(2 of 12);
+    }
+
+    // 세로 화면 (portrait) - 홈페이지용
+    @media (orientation: portrait) {
+      @include span(10 of 12 last);
+      @include prefix(0.5 of 12);
+      @include suffix(2 of 12);
+    }
+  }
+
+  .page__inner-wrap {
+    @include full();
+
+    .page__content,
+    .page__meta,
+    .page__share {
+      @include full();
+    }
+  }
+}
+
+// 포스트 페이지용 페이지 스타일 - 완전 분리
+.page-post {
+  @include breakpoint($large) {
+    // 가로 화면 (landscape) - 홈페이지용
+    @media (orientation: landscape) {
+      @include span(9.2 of 12 last);
+      @include prefix(0.5 of 12);
+      @include suffix(1 of 12);
+    }
+
+    // 세로 화면 (portrait) - 홈페이지용
+    @media (orientation: portrait) {
+      @include span(8.5 of 12 last);
+      @include prefix(0.25 of 12);
+      @include suffix(0 of 12);
+    }
   }
 
   .page__inner-wrap {

@@ -47,6 +47,10 @@ words_per_minute         : 160
 future                   : true
 read_more                : "disabled" # if enabled, adds "Read more" links to excerpts
 talkmap_link             : false      #change to true to add link to talkmap on talks page
+
+# Table of Contents
+toc                      : true       # true, false (default) - enables table of contents
+toc_label                : "목차"     # label for table of contents
 comments:
   provider               : "giscus"
   giscus:
@@ -171,6 +175,7 @@ defaults:
       comments: true
       share: true
       related: false
+      toc: true
   # _pages
   - scope:
       path: ""

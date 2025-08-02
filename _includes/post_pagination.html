@@ -2,7 +2,7 @@
 
 {% comment %}같은 카테고리 내에서 이전글/다음글 찾기{% endcomment %}
 {% assign current_categories = page.categories %}
-{% assign same_category_posts = site.posts | where_exp: "post", "post.categories contains current_categories[0]" | sort: 'title' %}
+{% assign same_category_posts = site.posts | where_exp: "post", "post.categories contains current_categories[0]" | sort: 'path' %}
 {% assign current_index = -1 %}
 {% for post in same_category_posts %}
   {% if post.url == page.url %}

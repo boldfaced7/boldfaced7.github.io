@@ -12,7 +12,7 @@ permalink: /
   {%- if categories_list.size > 0 -%}
   {%- if site.data.category_groups -%}
   {%- comment %} n단계 계층형 카테고리 목록을 재귀적으로 렌더링합니다. {% endcomment %}
-  {% include category_main_recursive.html list=site.data.category_groups level=1 %}
+  {% include category_main_recursive.html list=site.data.category_groups level=1 parent_context='' %}
   {%- else -%}
   {%- comment %} 그룹이 정의되지 않은 경우, 플랫한 카테고리 목록 표시 {% endcomment %}
   <div class="category-group">
