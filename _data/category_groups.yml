@@ -151,7 +151,7 @@
 - name: "✅ MySQL"
   children:
     - name: "📖 Real MySQL 8.0"
-  children:
+      children:
         - name: "📁 트랜잭션과 잠금"
           categories: ["MySQL", "Real MySQL 8.0", "트랜잭션과 잠금"]
           children: []
